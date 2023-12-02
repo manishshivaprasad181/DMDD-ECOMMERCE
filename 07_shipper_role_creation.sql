@@ -1,3 +1,4 @@
+set serveroutput on;
 BEGIN
   FOR r IN (select sid,serial# from v$session where USERNAME in(
 'SHIPPER_USER'
@@ -119,7 +120,7 @@ GRANT SELECT,INSERT,UPDATE,DELETE ON WEBADMIN.product TO SHIPPER_USER;
 
 --Create Users
 
-create user shipper_role IDENTIFIED BY GCQiRbpWBk1q;
+create user shipper_role IDENTIFIED BY VENemsfall2024;
 grant SHIPPER_USER to shipper_role;
 
 

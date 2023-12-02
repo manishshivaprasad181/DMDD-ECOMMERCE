@@ -3,6 +3,7 @@
 --CONNECT customer_role/your_password
 
 -- Execute the stored procedure with sample values
+set serveroutput on;
 BEGIN WEBADMIN.insert_user(
         'Shreyas',
         'Naveen',
@@ -152,7 +153,7 @@ WEBADMIN.insert_user(
         'fedex@gmail.com',
         'fedex!235',
         '8672151567',
-        'shipper',
+        'Shipper',
         '34',
         'summer st',
         'new york',
@@ -179,7 +180,7 @@ WEBADMIN.insert_user(
     'dhlexpress@example.com',
     'dhl5678',
     '5556789012',
-    'shipper',
+    'Shipper',
     '789',
     'Express Avenue',
     'Shippingtown',
@@ -194,7 +195,7 @@ WEBADMIN.insert_user(
     'amazonshipping@example.com',
     'amazon1234',
     '1234567890',
-    'shipper',
+    'Shipper',
     '456',
     'Shipping Street',
     'Amazontown',

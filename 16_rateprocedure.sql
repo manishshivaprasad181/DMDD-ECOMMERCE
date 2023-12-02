@@ -42,4 +42,5 @@ END rate_product;
 
 GRANT EXECUTE ON rate_product to customer_role;
 
---select * from ratings;
+--select * from orders;
+--select * from order_item;

@@ -1,3 +1,4 @@
+SET serveroutput on;
 BEGIN
   FOR r IN (select sid,serial# from v$session where USERNAME in(
 'CUSTOMER_USER'
@@ -120,15 +121,9 @@ GRANT  INSERT, SELECT, UPDATE(house_no, street, city, state) ON WEBADMIN.orders 
 GRANT  INSERT, SELECT, UPDATE(return_status, return_reason, return_quantity) ON WEBADMIN.order_item TO CUSTOMER_USER;
 
 
-
-
-
-
-
-
 --Create Users
 
-create user customer_role IDENTIFIED BY GCQiRbpWBk1q;
+create user customer_role IDENTIFIED BY REQpmsfall2024;
 grant CUSTOMER_USER to customer_role;
 
 

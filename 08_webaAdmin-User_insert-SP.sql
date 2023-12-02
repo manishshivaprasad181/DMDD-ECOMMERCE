@@ -1,3 +1,5 @@
+SET serveroutput ON;
+
 CREATE OR REPLACE PROCEDURE WEBADMIN.insert_user(
     p_first_name VARCHAR2,
     p_last_name VARCHAR2,
@@ -14,15 +16,23 @@ CREATE OR REPLACE PROCEDURE WEBADMIN.insert_user(
 AS
     v_user_id NUMBER; -- Declare the variable for user_id
 BEGIN
+    -- Validation: Check if the specified 'first_name' and 'last_name' for the given 'user_type' already exist
+    FOR existing_user IN (SELECT 1 FROM users WHERE first_name = p_first_name AND last_name = p_last_name AND user_type = p_user_type)
+    LOOP
+        DBMS_OUTPUT.PUT_LINE('User ' || p_first_name || ' ' || p_last_name || ' of type ' || p_user_type || ' already exists.');
+        RETURN; -- Exit the procedure if the user already exists
+    END LOOP;
+
+    -- If the user doesn't exist, proceed with the insertion
     INSERT INTO users (
         user_id,
-        First_name,
-        Last_name,
-        Email,
+        first_name,
+        last_name,
+        email,
         password,
         phone_number,
         user_type,
-        House_no,
+        house_no,
         street_address,
         city,
         state,
@@ -45,15 +55,15 @@ BEGIN
 
     IF p_user_type = 'Shipper' THEN
         -- Insert into the 'SHIPPER' table
-        INSERT INTO SHIPPER (shipper_id, carrier)
+        INSERT INTO shipper (shipper_id, carrier)
         VALUES (v_user_id, p_first_name);
     END IF;
 
     COMMIT;
+    DBMS_OUTPUT.PUT_LINE('User ' || p_first_name || ' ' || p_last_name || ' of type ' || p_user_type || ' inserted successfully.');
 END insert_user;
 /
-GRANT EXECUTE ON  insert_user TO shipper_role;
-GRANT EXECUTE ON  insert_user TO seller_role;
+
+GRANT EXECUTE ON insert_user TO shipper_role;
+GRANT EXECUTE ON insert_user TO seller_role;
 GRANT EXECUTE ON insert_user TO customer_role;
-
-

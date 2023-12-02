@@ -152,7 +152,8 @@ BEGIN
   WHERE order_id = v_order_id;
 
   COMMIT;
-  DBMS_OUTPUT.PUT_LINE('Order placed successfully');
+  --DBMS_OUTPUT.PUT_LINE('Order placed successfully');
+  DBMS_OUTPUT.PUT_LINE('Order placed successfully. Order_id: ' || v_order_id || ', Product_id: ' || p_product_id || ', Shipper_id: ' || p_shipper_id);
 EXCEPTION
   WHEN OTHERS THEN
     -- Handle other exceptions here, if needed
@@ -166,4 +167,5 @@ END place_order;
 GRANT EXECUTE ON place_order TO customer_role;
 
 --Select * from order_item;
+--select * from shipper;
 --select * from product;

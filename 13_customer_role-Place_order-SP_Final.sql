@@ -26,6 +26,11 @@ BEGIN
   v_state := 'Stateville';
   v_shipper_id := 11; -- Replace with the actual shipper_id
   v_payment_method := 'Cash'; -- Replace with the actual payment method
+  
+  WEBADMIN.place_order(2, 4, 4, SYSDATE, 'Pending', '67', '11th St', 'Boston', 'MA', 12, 'Cash');
+  WEBADMIN.place_order(3, 2, 7, SYSDATE, 'Pending', '433', 'Parker St', 'Huntington', 'NY', 11, 'Debit Card');
+  WEBADMIN.place_order(1, 3, 12, SYSDATE, 'Pending', '6', 'Lego Ave', 'Seattle', 'CA', 12, 'Cash');
+  WEBADMIN.place_order(4, 1, 25, SYSDATE, 'Pending', '147', 'Peoples Road', 'Arlington', 'TX', 12, 'Credit Card');
 
   -- Call the place_order procedure
   BEGIN
@@ -42,6 +47,8 @@ BEGIN
       v_shipper_id,
       v_payment_method -- Pass payment_method as an argument
     );
+    
+    
   EXCEPTION
     WHEN OTHERS THEN
       -- Handle exceptions here, if needed
@@ -49,4 +56,3 @@ BEGIN
   END;
 END;
 /
-
