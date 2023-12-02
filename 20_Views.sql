@@ -1,3 +1,4 @@
+set serveroutput on;
 --Top 5 Highest Spent Customers:
 CREATE OR REPLACE VIEW top_spent_customers AS
 SELECT
@@ -83,6 +84,8 @@ LEFT JOIN
     ratings r ON p.product_id = r.product_id
 GROUP BY
     p.product_id, p.product_name
+HAVING
+    AVG(r.rating) IS NOT NULL
 ORDER BY
     average_rating DESC;
 
@@ -119,7 +122,7 @@ SELECT
 FROM
     orders
 WHERE
-    order_status = 'Delivered';
+    order_status = 'Pending';
 
 
 --Products with Low Stock:
@@ -146,4 +149,4 @@ SELECT * FROM low_stock_products;
 
 
 
-select * from users;
+--select * from users;

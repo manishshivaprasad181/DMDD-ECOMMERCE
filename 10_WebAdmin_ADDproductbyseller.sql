@@ -1,4 +1,4 @@
--- Anonymous block to check and create sequence if needed
+set serveroutput on;
 DECLARE
   v_seq_exists NUMBER;
 BEGIN
@@ -48,7 +48,7 @@ BEGIN
 
   COMMIT;
 
-  DBMS_OUTPUT.PUT_LINE('Product added successfully. Product ID: ' || v_product_id);
+  DBMS_OUTPUT.PUT_LINE('Product added successfully. Product ID: ' || v_product_id || '   Product Name: ' || p_product_name);
 EXCEPTION
   WHEN OTHERS THEN
     DBMS_OUTPUT.PUT_LINE('Error adding product: ' || SQLERRM);
@@ -59,5 +59,6 @@ END;
 GRANT EXECUTE ON add_product TO seller_role;
 
 --select * from users;
-select * from brand;
-select * from category;
+--select * from brand;
+--select * from category;
+--select * from product;

@@ -1,4 +1,4 @@
-set serveroutput on
+set serveroutput on;
 
 BEGIN
    FOR cur_rec IN (SELECT object_name, object_type

@@ -1,3 +1,4 @@
+set serveroutput on;
 BEGIN
   FOR r IN (select sid,serial# from v$session where USERNAME in(
 'SELLER_USER'
@@ -119,7 +120,7 @@ GRANT SELECT,INSERT,UPDATE,DELETE ON WEBADMIN.product TO SELLER_USER;
 
 --Create Users
 
-create user seller_role IDENTIFIED BY VENpmssrFall2024;
+create user seller_role IDENTIFIED BY VENpmsfall2024;
 grant SELLER_USER to seller_role;
 
 
